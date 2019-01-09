@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>Insert title here</title>
+</head>
+<script  type="text/javascript" src="http://upcdn.b0.upaiyun.com/libs/jquery/jquery-2.0.2.min.js">
+</script>
+<body>
+
+<input type="text" id="id">
+<button type="button" onclick="getInfo()">getUserInfo</button>
+<p id="p"></p>
+<script type="text/javascript">
+	function getInfo(){
+		var userId=document.getElementById("id").value;
+		var p=document.getElementById("p");
+		$.ajax({
+			type : "GET",
+			contentType: "application/json",
+			url: "/users/user",
+			dataType : "json",
+			data : {
+				userId : userId,
+			},
+			success:  function te (data){
+				p.innerHTML=data.userId;
+				
+			}
+			
+	});
+	}
+</script>
+</body>
+</html>

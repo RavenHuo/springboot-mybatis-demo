@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>Insert title here</title>
+</head>
+<script  type="text/javascript" src="http://upcdn.b0.upaiyun.com/libs/jquery/jquery-2.0.2.min.js">
+</script>
+<body>
+
+<form action="/rest/get" method="get">
+	<input type="text" name="userId">
+	<input type="submit" value="get">
+</form>
+<form action="/rest/post" method="post">
+	<input type="text" name="userId">
+	<input type="submit" value="post">
+</form>
+<form action="/rest/put" method="post">
+	<input type="hidden" name="_method" value="PUT">
+	<input type="text" name="userId">
+	<input type="submit" value="put">
+</form>
+<form action="/rest/delete" method="post">
+	<input type="hidden" name="_method" value="DELETE">
+	<input type="text" name="userId" id="deleteId">
+	<input type="button" value="delete" onclick="deleteTest()">
+	
+</form>
+
+<script type="text/javascript">
+	function deleteTest(){
+		var userId=document.getElementById("deleteId").value;
+		$.ajax({
+			type : "delete",
+			contentType: "application/json",
+			url: "/users/user",
+			dataType : "json",
+			data : {
+				
+				userId : userId,
+			},
+			success:  function te (data){
+				alter(data);
+			}
+			
+	});
+		
+	}
+</script>
+</body>
+</html>
